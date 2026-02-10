@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  minecraft:
+    image: robaldwin/minecraft-server:bmc5_47_1
+    container_name: minecraft-server-bmc5
+    restart: unless-stopped
+    
+    ports:
+      - "25565:25565"  # Minecraft server port
+    
+    volumes:
+      # Persistent data volumes
+      - ./world:/app/world
+      - ./logs:/app/logs
+      - ./crash-reports:/app/crash-reports
+      - ./config:/app/config
+      - ./mods:/app/mods
+      
+      # Configuration files
+      - ./server.properties:/app/server.properties
+      - ./ops.json:/app/ops.json
+      - ./whitelist.json:/app/whitelist.json
+      - ./banned-players.json:/app/banned-players.json
+      - ./banned-ips.json:/app/banned-ips.json
+      
+    environment:
+      # JVM Memory settings (adjust based on your server)
+      MEMORY: "6G"
+      
+      # Game settings (optional - will override server.properties)
+      GAMEMODE: "survival"  # survival, creative, adventure, or spectator
+      MAX_PLAYERS: "20"     # Maximum number of players
+      
+    stdin_open: true
+    tty: true
+    
+    # Resource limits (optional - adjust based on your server)
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+        reservations:
+          memory: 4G
