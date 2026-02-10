@@ -14,7 +14,6 @@ services:
       - ./world:/app/world
       - ./logs:/app/logs
       - ./crash-reports:/app/crash-reports
-      - ./config:/app/config
       
       # Configuration files
       - ./server.properties:/app/server.properties
@@ -22,6 +21,8 @@ services:
       - ./whitelist.json:/app/whitelist.json
       - ./banned-players.json:/app/banned-players.json
       - ./banned-ips.json:/app/banned-ips.json
+      - ./variables.txt:/app/variables.txt
+      - ./user_jvm_args.txt:/app/user_jvm_args.txt
       
     environment:
       # JVM Memory settings (adjust based on your server)
