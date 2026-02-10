@@ -15,7 +15,6 @@ services:
       - ./logs:/app/logs
       - ./crash-reports:/app/crash-reports
       - ./config:/app/config
-      - ./mods:/app/mods
       
       # Configuration files
       - ./server.properties:/app/server.properties
