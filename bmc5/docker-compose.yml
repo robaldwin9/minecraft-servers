@@ -10,16 +10,13 @@ services:
       # Refer to https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/mod-platforms/auto-curseforge/#api-key
       CF_API_KEY: ${CF_API_KEY}
       CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/better-mc-neoforge-bmc5/files/7449464
-     #  CF_SLUG: better-mc-neoforge-bmc5
-     #  CF_FILE_ID: "7449688"
       DIFFICULTY: normal
       MODE: survival
-      ENABLE_WHITELIST: true
+      HARDCORE: TRUE
+      WHITELIST: |
+        02ceebcc-1b0d-403d-bf5d-65d1a3a767d3
       MEMORY: 6G
     volumes:
-      - mc:/data
+      - ./mc:/data
     ports:
       - "25565:25565"
-
-volumes:
-  mc: {}
