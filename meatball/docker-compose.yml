@@ -1,0 +1,25 @@
+services:
+  mc:
+    image: itzg/minecraft-server:java8
+    environment:
+      EULA: true
+      MODPACK_PLATFORM: AUTO_CURSEFORGE
+      # Allocate API key from https://console.curseforge.com/
+      # and set in .env file making sure to double up dollar signs, such as
+      # CF_API_KEY=$$2a$$10$$....
+      # Refer to https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/mod-platforms/auto-curseforge/#api-key
+      CF_API_KEY: ${CF_API_KEY}
+      CF_SLUG: meatballcraft
+      # https://www.curseforge.com/minecraft/modpacks/skyfactory-5/files/all?page=1&pageSize=20
+      CF_FILENAME_MATCHER: 0.18.3
+      DIFFICULTY: normal
+      MODE: survival
+      HARDCORE: FALSE
+      WHITELIST: |
+        02ceebcc-1b0d-403d-bf5d-65d1a3a767d3
+        8b618607-d722-4d93-8a41-40c209c22339
+      MEMORY: 6G
+    volumes:
+      - ./mc:/data
+    ports:
+      - "25565:25565"
