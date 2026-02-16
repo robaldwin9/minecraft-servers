@@ -1,0 +1,15 @@
+services:
+  mc:
+    image: itzg/minecraft-server
+    environment:
+      EULA: true
+      MODE: survival
+      HARDCORE: TRUE
+      WHITELIST: |
+        02ceebcc-1b0d-403d-bf5d-65d1a3a767d3
+        8b618607-d722-4d93-8a41-40c209c22339
+      MEMORY: 6G
+    volumes:
+      - ./mc:/data
+    ports:
+      - "25565:25565"
